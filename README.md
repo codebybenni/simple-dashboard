@@ -7,6 +7,7 @@ Mein erstes Projekt.
 - Interaktive To-Do Liste
 - Modernes Dark-Mode Design
 - Wetteranzeige
+- motivierende Sprüche 
 - Weihnachtliches Easteregg ❄
 
 ## Tools
