@@ -562,11 +562,13 @@
     </div>
 
     <div class="container">
+        <!-- Clock Section -->
         <div class="glass-card clock-section">
             <div class="time" id="time">00:00:00</div>
             <div class="date" id="date">Montag, 1. Januar 2024</div>
         </div>
 
+        <!-- Motivational Quote Section -->
         <div class="glass-card" style="text-align: center;">
             <h2><span class="icon">💫</span> Tägliche Motivation</h2>
             <div id="quoteContent">
@@ -574,6 +576,7 @@
             </div>
         </div>
 
+        <!-- Weather Section -->
         <div class="glass-card" style="text-align: center;">
             <h2><span class="icon">🌤️</span> Wetter</h2>
             <div id="weatherContent">
@@ -581,7 +584,9 @@
             </div>
         </div>
 
+        <!-- Grid Layout for Tasks and Goals -->
         <div class="grid">
+            <!-- To-Do List Section -->
             <div class="glass-card">
                 <h2><span class="icon">✓</span> To-Do Liste</h2>
                 <div class="input-group">
@@ -602,6 +607,7 @@
                 </div>
             </div>
 
+            <!-- Daily Goals Section -->
             <div class="glass-card">
                 <h2><span class="icon">🎯</span> Daily Goals</h2>
                 <div class="input-group">
@@ -644,8 +650,16 @@
         setInterval(updateClock, 1000);
         updateClock();
 
-        let tasks = [];
-        let goals = [];
+        let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+        let goals = JSON.parse(localStorage.getItem('goals')) || [];
+
+        function saveTasks() {
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+        }
+
+        function saveGoals() {
+            localStorage.setItem('goals', JSON.stringify(goals));
+        }
 
         function addTask() {
             const input = document.getElementById('taskInput');
@@ -653,17 +667,20 @@
             if (text) {
                 tasks.push({ text, completed: false });
                 input.value = '';
+                saveTasks();
                 renderTasks();
             }
         }
 
         function toggleTask(index) {
             tasks[index].completed = !tasks[index].completed;
+            saveTasks();
             renderTasks();
         }
 
         function deleteTask(index) {
             tasks.splice(index, 1);
+            saveTasks();
             renderTasks();
         }
 
@@ -692,17 +709,20 @@
             if (text) {
                 goals.push({ text, completed: false });
                 input.value = '';
+                saveGoals();
                 renderGoals();
             }
         }
 
         function toggleGoal(index) {
             goals[index].completed = !goals[index].completed;
+            saveGoals();
             renderGoals();
         }
 
         function deleteGoal(index) {
             goals.splice(index, 1);
+            saveGoals();
             renderGoals();
         }
 
