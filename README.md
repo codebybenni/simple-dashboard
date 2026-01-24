@@ -8,7 +8,6 @@ Mein erstes Projekt.
 - Modernes Dark-Mode Design
 - Wetteranzeige
 - motivierende Sprüche 
-- Weihnachtliches Easteregg ❄
 
 ## Tools
 - **Cursor** (AI Code Editor)
